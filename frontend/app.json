@@ -34,10 +34,13 @@
           "backgroundColor": "#ffffff"
         }
       ],
-      "expo-image-picker",
-      {
-        "photosPermission":"The app needs access to your photos"
-      }
+      [
+        "expo-image-picker",
+        {
+          "photoPermission": "The app needs access to your photos"
+        }
+      ],
+      "react-native-vision-camera"
     ],
     "experiments": {
       "typedRoutes": true
