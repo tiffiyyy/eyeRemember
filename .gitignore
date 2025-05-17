@@ -2,3 +2,4 @@ node_modules/
 models/
 data/
 .DS_Store
+src/__pycache__
