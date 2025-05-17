@@ -9,9 +9,12 @@ from pathlib import Path
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
-from openvino.runtime import Core
+from openvino import Core
 import pickle 
+
 from face_detector import detect_faces
+from face_reid import preprocess, getH, getW
+from utils import find_best_match
 
 ie = Core()
 
@@ -31,7 +34,7 @@ def draw(image, boxes):
     return new_image 
 
 # populates faces with profile dictionary generated via function in face_reid.py
-with open("face_db.pkl", "rb") as f:
+with open("data/face_db.pkl", "rb") as f:
     faces = pickle.load(f)
 
 # set running to when camera is on 
@@ -40,10 +43,15 @@ running = 1
 while(running):
     # at every frame, return an image that is the current frame 
         # extract current frame from front end and store into variable to pass through imread 
-    image = cv2.imread("data/1-face.jpg")
-    boxes = detect_faces(image, 0.3)
+    frameImage = cv2.imread("data/1-face.jpg")
+    boxes = detect_faces(frameImage, 0.3)
+
+    embeddings = preprocess(frameImage,getW(),getH())
+    for e in embeddings:
+        personIdentified = find_best_match(e,thing)
+        
     # generates a matrix of vectors containing facial information and 
     # filters out entries with low confidence level 
     plt.figure(figsize = (10, 6))
-    final_image = draw(image, boxes)
+    final_image = draw(frameImage, boxes)
     plt.imshow(cv2.cvtColor(final_image, cv2.COLOR_BGR2RGB))
