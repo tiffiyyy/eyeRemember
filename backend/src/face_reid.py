@@ -7,7 +7,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 import pickle
-from openvino.runtime import Core
+from openvino import Core
 
 from face_detector import detect_faces
 
