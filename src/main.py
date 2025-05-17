@@ -1,5 +1,5 @@
 # By Tiffany Le 
-# Last Updated: May 16, 2025 
+# Last Updated: May 17, 2025 
 # This program contains the code to process images using Intel Tiber's
 # facial reidentification model (face-reidentification-retail-0095) and 
 # draws boxes around each identified face and more. 

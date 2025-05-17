@@ -1,3 +1,6 @@
+# By Tiffany Le and Linus Wong
+# Last Updated: May 17, 2025 
+
 from pathlib import Path
 
 import cv2
