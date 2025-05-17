@@ -5,6 +5,18 @@ This repository contains the programs and models to implement Intel OpenVINO's f
 
 ### Model Installation  
 Please run the following commands to download necessary models. 
+Note: These commands are Mac specific. Window commands may differ. 
+
+To download the models for face_detector.py 
+```
+mkdir -p models/face-detection-adas-0001/FP32
+cd models/face-detection-adas-0001/FP32
+
+wget https://storage.openvinotoolkit.org/repositories/open_model_zoo/2022.3/models_bin/1/face-detection-adas-0001/FP32/face-detection-adas-0001.xml
+wget https://storage.openvinotoolkit.org/repositories/open_model_zoo/2022.3/models_bin/1/face-detection-adas-0001/FP32/face-detection-adas-0001.bin
+```
+
+To download the models for face_reid.py 
 ```
 mkdir -p models/face-reidentification-retail-0095/FP32
 cd models/face-reidentification-retail-0095/FP32
