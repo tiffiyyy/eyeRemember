@@ -5,6 +5,7 @@ This repository contains the programs and models to implement Intel OpenVINO's f
 
 ### Model Installation  
 Please run the following commands to download necessary models. 
+Note: These commands are Mac specific. Window commands may differ. 
 
 To download the models for face_detector.py 
 ```
