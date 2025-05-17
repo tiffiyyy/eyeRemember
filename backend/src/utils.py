@@ -1,6 +1,7 @@
 import numpy as np
 from face_reid import preprocess, getH, getW
 import pickle
+from utils import save_face_db
 
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
@@ -18,10 +19,10 @@ def find_best_match(embedding, face_db, threshold):
 # for every image processed, generate an image ID for each person 
     #extract name from frontend name upload, should linked with the previously extracted image
 
-def save_face_db(image,name,desc):
+def save_face_db(image,name):
     embeddings = preprocess(image, threshold=0.3, width=getW(), height=getH())
     name = name
-    desc= desc
+    # desc= desc
 
 
     try:
