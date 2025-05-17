@@ -13,7 +13,7 @@ wget https://storage.openvinotoolkit.org/repositories/open_model_zoo/2023.0/mode
 wget https://storage.openvinotoolkit.org/repositories/open_model_zoo/2023.0/models_bin/1/face-reidentification-retail-0095/FP32/face-reidentification-retail-0095.bin
 ```
 
-In the case of using a Mac, run 'brew install wget' in your command line in order to utilize the above commands. 
+In the case of using a Mac, run `brew install wget` in your command line in order to utilize the above commands. 
 
 ### Requirements
 - Python 3.x  
