@@ -22,5 +22,8 @@ In the case of using a Mac, run `brew install wget` in your command line in orde
 - Other dependencies (list from `requirements.txt`)
 
 ### Cloning the Repo 
+To clone this repository, run the following commands: 
+```
 git clone https://github.com/tiffiyyy/itm
 cd itm 
+```
