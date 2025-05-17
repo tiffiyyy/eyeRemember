@@ -18,10 +18,19 @@ input_layer_ir = compiled_model.input(0)
 output_layer_ir = compiled_model.output(0)
 
 
-# make fucntion to process the face
+N, C, H, W = input_layer_ir.shape 
 image = cv2.imread("data/1-face.jpg")
 
-preprocessed_face = detect_faces(image,0.3)
+def preprocess(image:np.ndarray,threshold:float,width:int,height:int):
+    
+    boxes = detect_faces(image,threshold)
+    embeddings = [] # embeddings for all all boxes
+    for box in boxes:
+        x_min, y_min, x_max, y_max = box
+        face_crop = image[y_min:y_max, x_min:x_max]
+        resizedReid = cv2.resize(face_crop,(W,H))
+        input_blob = np.expand_dims(resizedReid.transpose(2, 0, 1), axis=0).astype(np.float32)
+        embeddings.append(compiled_model([input_blob])[output_layer_ir])
+    return embeddings
 
-
-embedding = compiled_model([preprocessed_face])[output_layer_ir]
+# make fucntion to process the face
