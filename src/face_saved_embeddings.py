@@ -1,9 +1,5 @@
-# By Tiffany Le 
-# Last Updated: May 17, 2025 
-
-from pathlib import Path
-
 import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
 
@@ -17,11 +13,5 @@ compiled_model = ie.compile_model(model = model, device_name = "CPU")
 input_layer_ir = compiled_model.input(0)
 output_layer_ir = compiled_model.output(0)
 
+#from frontend take photos/name/desc and embed the photos into face_db.pkl
 
-# make fucntion to process the face
-image = cv2.imread("data/1-face.jpg")
-
-preprocessed_face = detect_faces(image,0.3)
-
-
-embedding = compiled_model([preprocessed_face])[output_layer_ir]
