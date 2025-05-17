@@ -10,6 +10,7 @@ import cv2
 import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
+import pickle 
 from face_detector import detect_faces
 
 ie = Core()
@@ -20,13 +21,6 @@ compiled_model = ie.compile_model(model = model, device_name = "CPU")
 input_layer_ir = compiled_model.input(0)
 output_layer_ir = compiled_model.output(0)
 
-image = cv2.imread("data/1-face.jpg")
-
-# generates a matrix of vectors containing facial information and 
-# filters out entries with low confidence level 
-boxes = detect_faces(image, 0.3)
-
-
 # function to draw rectangle around detected face 
 def draw(image, boxes): 
     new_image = image.copy()
@@ -36,7 +30,20 @@ def draw(image, boxes):
         cv2.rectangle(img = new_image, pt1 = (x1, y1), pt2 = (x2, y2), color = color, thickness = 10)
     return new_image 
 
-# draw boxes 
-plt.figure(figsize = (10, 6))
-final_image = draw(image, boxes)
-plt.imshow(cv2.cvtColor(final_image, cv2.COLOR_BGR2RGB))
+# populates faces with profile dictionary generated via function in face_reid.py
+with open("face_db.pkl", "rb") as f:
+    faces = pickle.load(f)
+
+# set running to when camera is on 
+running = 1
+
+while(running):
+    # at every frame, return an image that is the current frame 
+        # extract current frame from front end and store into variable to pass through imread 
+    image = cv2.imread("data/1-face.jpg")
+    boxes = detect_faces(image, 0.3)
+    # generates a matrix of vectors containing facial information and 
+    # filters out entries with low confidence level 
+    plt.figure(figsize = (10, 6))
+    final_image = draw(image, boxes)
+    plt.imshow(cv2.cvtColor(final_image, cv2.COLOR_BGR2RGB))
