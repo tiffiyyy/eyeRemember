@@ -41,3 +41,17 @@ def preprocess(image:np.ndarray,threshold:float,width:int,height:int):
     return embeddings
 
 embeddings = preprocess(image, threshold=0.3, width=W, height=H)
+
+# for every image processed, generate an image ID for each person 
+
+name = "linus"
+
+# creates a dictionary of profiles linking a name to an embedding 
+profiles = {
+    name: embeddings
+}
+
+# populates a pickle file with all profiles 
+with open("face_db.pkl", "wb") as f:
+    pickle.dump(profiles, f)
+
