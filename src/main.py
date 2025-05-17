@@ -25,6 +25,7 @@ height, width = image.shape[0:2]
 # n = num of images, c = channels (colors detected)
 # h = image height, w = image width 
 N, C, H, W = input_layer_ir.shape 
+resized_image = cv2.resize(image, (W, H))
 
 # image is resized for model to process images in format: (1, W, C, H)
 input_image = np.expand_dims(resized_image.transpose(2, 0, 1), 0)
