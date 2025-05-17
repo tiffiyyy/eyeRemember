@@ -31,7 +31,7 @@ def detect_faces(image: np.ndarray, threshold: float):
 
     # for each box in boxes, the last four values will be kept 
     # if the confidence level is greater than the threshold value 
-    boxes = np.array([box[-4:] for box in results if box[0] > threshold])
+    boxes = np.array([box[-4:] for box in boxes if box[0] > threshold])
     # restore original image dimensions to be returned with box on detected face 
     boxes = boxes * np.array([width, height, width, height])
 
