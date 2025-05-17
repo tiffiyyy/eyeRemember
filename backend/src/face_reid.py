@@ -40,4 +40,4 @@ def preprocess(image:np.ndarray,threshold:float,width:int,height:int):
         embeddings.append(compiled_model([input_blob])[output_layer_ir])
     return embeddings
 
-# make fucntion to process the face
+embeddings = preprocess(image, threshold=0.3, width=W, height=H)

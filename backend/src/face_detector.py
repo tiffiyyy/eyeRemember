@@ -17,6 +17,8 @@ input_layer_ir = compiled_model.input(0)
 output_layer_ir = compiled_model.output(0)
 N, C, H, W = input_layer_ir.shape 
 
+
+#Creates boxes for all of the faces in the image
 def detect_faces(image: np.ndarray, threshold: float): 
     # n = num of images, c = channels (colors detected)
     # h = image height, w = image width 
