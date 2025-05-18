@@ -1,7 +1,9 @@
+# By Linus Wong
+# Last Updated: May 17, 2025 
+
 import numpy as np
 from face_reid import preprocess, getH, getW
 import pickle
-from utils import save_face_db
 
 def cosine_similarity(a, b):
     return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
@@ -26,7 +28,7 @@ def save_face_db(image,name):
 
 
     try:
-        with open("data/face_db.pkl", "rb") as f:
+        with open("../data/face_db.pkl", "rb") as f:
             profiles = pickle.load(f)
     except FileNotFoundError:
         profiles = {}
@@ -35,5 +37,5 @@ def save_face_db(image,name):
         profiles[name] = embeddings[0]
     
     # populates a pickle file with all profiles 
-    with open("face_db.pkl", "wb") as f:
+    with open("../data/face_db.pkl", "wb") as f:
         pickle.dump(profiles, f)

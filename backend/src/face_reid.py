@@ -13,7 +13,8 @@ from face_detector import detect_faces
 
 ie = Core()
 
-model = ie.read_model(model = 'models/face-reidentification-retail-0095.xml')
+file_path = Path("face-detection-adas-0001.xml")
+model = ie.read_model(model = file_path)
 compiled_model = ie.compile_model(model = model, device_name = "CPU")
 
 input_layer_ir = compiled_model.input(0)
@@ -22,7 +23,8 @@ output_layer_ir = compiled_model.output(0)
 
 N, C, H, W = input_layer_ir.shape 
     #extract from image upload
-image = cv2.imread("data/IMG_2875.jpeg")
+image_path = Path("IMG_2875.jpeg")
+image = cv2.imread(image_path)
 
 def getW():
     return W

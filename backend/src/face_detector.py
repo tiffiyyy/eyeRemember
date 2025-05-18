@@ -10,7 +10,8 @@ from openvino import Core
 
 ie = Core()
 
-model = ie.read_model(model = 'models/face-detection-adas-0001.xml')
+file_path = Path("face-detection-adas-0001.xml")
+model = ie.read_model(model = file_path)
 compiled_model = ie.compile_model(model = model, device_name = "CPU")
 
 input_layer_ir = compiled_model.input(0)
